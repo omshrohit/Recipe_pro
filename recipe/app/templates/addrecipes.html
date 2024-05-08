@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:aqua;
+            text-align:center;
+        }
+        input{
+            width:80%;
+            height:40px;
+        }
+       
+    </style>
+</head>
+<body>
+    <form action="/add_recipe/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="box" type="text" name="recipe_name" placeholder="Recipe Name..." required/><br><br>
+        <input class="box" type="text" name='recipe_description' placeholder="Descriptioin" required/><br><br>
+
+        <input type="file" name='recipe_image' placeholder="image" required/><br><br>
+        <input type="submit" value="Submit" class="button"/>
+        
+    </form>
+</body>
+</html>

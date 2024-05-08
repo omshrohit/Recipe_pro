@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:aqua;
+            text-align:center;
+        }
+  
+      
+        table{
+            margin-left:100px;
+            text-align:center;
+            width:80%;
+            left=100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe page</h1><h4><a href="{%url 'add_recipe'%}">AddRecipe</a></h4>
+
+    <form>
+        <input type='text' name='search' placeholder="search recipe..."/>
+        <button>Search</button>
+    </form><br></hr><br>
+    <div class="container"> 
+        <div class='box'>
+
+            <table border="2px solid black">
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Descriptioin</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                    
+                </tr>
+                {% for recipe in recipes %}
+              
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td> {{recipe.recipe_name}}</td>
+                    <td><p>{{recipe.recipe_description}}</p></td>
+                    <td><image src="/media/{{recipe.recipe_image}}"/></td>
+                    <td><a href="{% url 'remove_recipe' recipe.pk %}">Delete</a>
+                        <a href="{% url 'update_recipe' recipe.pk %}">update</a></td>
+
+                </tr>
+                
+                {% endfor %}
+                
+            </table>
+
+        </div>
+    </div>
+  
+
+    
+    
+</body>
+</html>
